@@ -1,6 +1,5 @@
 package com.websystique.springboot;
 
-import com.websystique.micro.service.account.DataBaseConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -14,9 +13,6 @@ import org.springframework.context.annotation.*;
         })
 @EntityScan(basePackages = "com.websystique.micro.service.account.domain")
 //@SpringBootApplication(scanBasePackages={"com.websystique.springboot"})// same as @Configuration @EnableAutoConfiguration @ComponentScan
-@Import({
-        DataBaseConfiguration.class
-})
 public class SpringBootStandAloneApp {
 
     public static void main(String[] args) {

@@ -1,7 +1,6 @@
 package com.websystique.micro.service.account.controller;
 
 import com.websystique.micro.service.account.domain.Account;
-import com.websystique.micro.service.account.repo.AccountRepo;
 import com.websystique.micro.service.account.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
