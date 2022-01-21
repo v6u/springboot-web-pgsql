@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" ></link>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"></link>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round"></link>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <style type="text/css">
+    .table-wrapper {
+        background: #fff;
+        padding: 20px 25px;
+        margin: 30px 0;
+		border-radius: 3px;
+        box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    }
+	.table-title {
+		padding-bottom: 15px;
+		background: #435d7d;
+		color: #fff;
+		padding: 16px 30px;
+		margin: -20px -25px 10px;
+		border-radius: 3px 3px 0 0;
+    }
+    .table-title h2 {
+		margin: 5px 0 0;
+		font-size: 24px;
+	}
+	.table-title .btn-group {
+		float: right;
+	}
+	.table-title .btn {
+		color: #fff;
+		float: right;
+		font-size: 13px;
+		border: none;
+		min-width: 50px;
+		border-radius: 2px;
+		border: none;
+		outline: none !important;
+		margin-left: 10px;
+	}
+	.table-title .btn i {
+		float: left;
+		font-size: 19px;
+		margin-right: 5px;
+	}
+
+    </style>
+    <script type="text/javascript">
+$(document).ready(function(){
+	$('[data-toggle="tooltip"]').tooltip();
+
+    jQuery('#editAccountModal').on('show.bs.modal', function (event) {
+        var $button = $(event.relatedTarget);
+        var $row = jQuery($button).closest('tr');
+        var $columns = $row.find('td').not( "#actionBtns" );
+        $columns.addClass('row-highlight');
+        var modal = $(this);
+        modal.find('.modal-body #editaccountid').val($columns[0].innerHTML);
+        modal.find('.modal-body #fullName').val($columns[1].innerHTML);
+        modal.find('.modal-body #name').val($columns[2].innerHTML);
+        modal.find('.modal-body #login').val($columns[3].innerHTML);
+        modal.find('.modal-body #email').val($columns[4].innerHTML);
+    });
+    jQuery('#deleteAccountModal').on('show.bs.modal', function (event) {
+        var $button = $(event.relatedTarget);
+        var $row = jQuery($button).closest('tr');
+        var $columns = $row.find('td').not( "#actionBtns" );
+        $columns.addClass('row-highlight');
+        var modal = $(this);
+        modal.find('.modal-body #deleteaccountid').val($columns[0].innerHTML);
+    });
+
+});
+</script>
+    <title>Serious Leopard</title>
+</head>
+<body>
+<div>
+    <div th:replace="parts/header :: header"></div>
+
+    <div class="container">
+
+        <div class="col-12 mh-100">
+            <!-- tabs -->
+            <!-- ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="nav-item"><a href="#" aria-controls="accounts" role="tab" data-toggle="tab" class="nav-link active">Accounts Editor</a>
+                </li>
+            </ul -->
+            <div class="tab-content mh-100">
+                <div role="tabpanel" class="tab-pane active py-3 mh-100 border-dark" id="accounts" >
+                    <div class="table-wrapper">
+                        <div class="table-title">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <h4>Accounts</h4>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="search-box">
+                                            <a href="#addAccountModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New</span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <table class="table table-bordered table-sm">
+                            <thead class="thead-light">
+                            <tr>
+                                <th>#</th>
+                                <th>FullName</th>
+                                <th>Name</th>
+                                <th>Login</th>
+                                <th>Email</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each ="acc : ${accounts}">
+                                <td th:utext="${acc.id}"></td>
+                                <td th:utext="${acc.fullName}"></td>
+                                <td th:utext="${acc.name}"></td>
+                                <td th:utext="${acc.login}"></td>
+                                <td th:utext="${acc.email}"></td>
+                                <td id="actionBtns">
+                                    <a data-target="#editAccountModal" class="edit" data-toggle="modal" th:data-accountid="${acc.id}"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                    <a data-target="#deleteAccountModal" class="delete" data-toggle="modal" th:data-accountid="${acc.id}"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- Edit Modal HTML -->
+    <div id="addAccountModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="/account/add" th:object="${account}" method="POST">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Add Account</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" class="form-control" th:field="*{fullName}" ></input>
+                        </div>
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" class="form-control" th:field="*{name}" ></input>
+                        </div>
+                        <div class="form-group">
+                            <label>Login</label>
+                            <input type="text" class="form-control" th:field="*{login}" ></input>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="text" class="form-control" th:field="*{email}" ></input>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel"></input>
+                        <input type="submit" class="btn btn-success" value="Add"></input>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Edit Modal HTML -->
+    <div id="editAccountModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="/account/edit" th:object="${account}" method="POST">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Edit Account</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" class="form-control" id="fullName" name="fullName" th:field="*{fullName}" ></input>
+                        </div>
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" class="form-control" id="name" name="name" th:field="*{name}" ></input>
+                        </div>
+                        <div class="form-group">
+                            <label>Login</label>
+                            <input type="text" class="form-control" id="login" name="login" th:field="*{login}" ></input>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="text" class="form-control" id="email" name="email" th:field="*{email}" ></input>
+                            <input type="hidden" class="form-control" name="id" id="editaccountid" th:field="*{id}"></input>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel"></input>
+                        <input type="submit" class="btn btn-success" value="Save"></input>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Delete Modal HTML -->
+    <div id="deleteAccountModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="/account/delete" method="POST">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Delete Account</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p id="textmessg">Are you sure you want to delete this record?</p>
+                        <p class="text-warning"></p>
+                        <input type="hidden" class="form-control" name="accountid" id="deleteaccountid" ></input>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel"></input>
+                        <input type="submit" class="btn btn-danger" value="Delete"></input>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="parts/footer :: footer"></div>
+</div>
+</body>
+</html>

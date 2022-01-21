@@ -1,0 +1,13 @@
+<header th:fragment="header" xmlns:th="http://www.w3.org/1999/xhtml">
+    <nav class="navbar navbar-expand-sm navbar-dark " style="background-color: #435d7d;">
+        <span class="navbar-brand mb-0 h2">Accounts Manager</span>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item" ><div class="nav-link" th:text="${title}"></div>
+                    <div class="nav-link" th:text="${message}"></div></li>
+                <li class="nav-item" ><div class="nav-link" th:text="${rwconnection}"></div>
+                    <div class="nav-link" th:text="${readconnection}"></div></li>
+            </ul>
+        </div>
+    </nav>
+</header>

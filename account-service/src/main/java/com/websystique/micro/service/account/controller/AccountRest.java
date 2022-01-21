@@ -1,14 +1,11 @@
 package com.websystique.micro.service.account.controller;
 
 import com.websystique.micro.service.account.domain.Account;
+import com.websystique.micro.service.account.repo.AccountRepo;
 import com.websystique.micro.service.account.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.PersistenceContext;
-import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
 

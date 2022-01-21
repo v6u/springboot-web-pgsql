@@ -56,32 +56,37 @@
             <version>4.3.5.RELEASE</version>
         </dependency>
         <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+            <version>4.0.3</version>
+        </dependency>
+        <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.17</version>
             <scope>compile</scope>
         </dependency>
-          <dependency>
+        <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>9.4-1203-jdbc4</version>
         </dependency>
         <dependency>
-	    <groupId>com.github.chrisgleissner</groupId>
-	    <artifactId>jutil-protobuf</artifactId>
-	    <version>1.1.11</version>
-	</dependency>
-	<dependency>
-	    <groupId>com.github.chrisgleissner</groupId>
-	    <artifactId>jutil-sql-log</artifactId>
-	    <version>1.1.11</version>
-	</dependency>
-	<dependency>
-	    <groupId>com.github.chrisgleissner</groupId>
-	    <artifactId>jutil-table</artifactId>
-	    <version>1.1.11</version>
-	</dependency>
-   </dependencies>
+            <groupId>com.github.chrisgleissner</groupId>
+            <artifactId>jutil-protobuf</artifactId>
+            <version>1.1.11</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.chrisgleissner</groupId>
+            <artifactId>jutil-sql-log</artifactId>
+            <version>1.1.11</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.chrisgleissner</groupId>
+            <artifactId>jutil-table</artifactId>
+            <version>1.1.11</version>
+        </dependency>
+    </dependencies>
     <build>
         <plugins>
 
