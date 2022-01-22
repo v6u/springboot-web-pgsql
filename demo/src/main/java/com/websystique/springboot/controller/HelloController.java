@@ -41,6 +41,18 @@ public class HelloController {
 	public String index(Model modal) {
 		modal.addAttribute("title", title + " " + version + "/" + env);
 		modal.addAttribute("message", "NANO is " + nano);
+		try{
+			accService.testMaster();
+			modal.addAttribute("masterstatus","onLine");
+		}catch (Exception ex){
+			modal.addAttribute("masterstatus","offLine");
+		}
+		try{
+			accService.testSlave();
+			modal.addAttribute("slavestatus","onLine");
+		}catch (Exception ex){
+			modal.addAttribute("slavestatus","offLine");
+		}
 		if (crudConnectionString.contains("?")){
 			crudConnectionString=crudConnectionString.substring(0,crudConnectionString.indexOf("?"));
 		}
@@ -54,19 +66,10 @@ public class HelloController {
 			List<Account> l = accService.findAll();
 			l.sort((a,b)->compare(a.getId(),b.getId()));
 			modal.addAttribute("accounts", l);
-			modal.addAttribute("slavestatus","onLine");
 		} catch (Exception ex){
 			modal.addAttribute("accounts", new ArrayList<Account>());
-			modal.addAttribute("slavestatus","offLine");
 			return "index";
 		}
-		try{
-			accService.testMaster();
-		}catch (Exception ex){
-			modal.addAttribute("masterstatus","offLine");
-			return "index";
-		}
-		modal.addAttribute("masterstatus","onLine");
 		return "index";
 	}
 

@@ -39,4 +39,7 @@ public class AccountService {
     public void testMaster() throws Exception{
         accWrite.count();
     }
+    public void testSlave() throws Exception{
+        accRead.count();
+    }
 }
