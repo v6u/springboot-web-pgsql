@@ -1,14 +1,18 @@
 package com.websystique.micro.service.account.domain;
 
+import org.springframework.stereotype.Component;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
+@Component
 @Entity
 @Table(name = "ACCOUNT")
 public class Account implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,  generator = "account_id_seq")
+    @SequenceGenerator(name="account_id_seq", sequenceName = "account_id_seq", initialValue = 1000, allocationSize = 1)
     private Long id;
 
     @Column(name = "LOGIN")
