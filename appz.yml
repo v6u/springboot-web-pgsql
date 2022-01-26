@@ -19,18 +19,18 @@ properties:
   title: Spring Boot Web - Postgres HA Demo
   nano: 83
   
-  #Master Database
-  MASTER_DB_HOST: pgconnect-0-2
-  MASTER_DB_NAME: springbootweb
-  MASTER_DB_PORT: 5000
-  MASTER_DB_USERNAME: springbootweb
-  MASTER_SPRINGBOOTWEB_PASSWORD:
+  #Primary Database
+  PRIMARY_DB_HOST: pgconnect-0-2
+  PRIMARY_DB_NAME: springbootweb
+  PRIMARY_DB_PORT: 5000
+  PRIMARY_DB_USERNAME: springbootweb
+  PRIMARY_SPRINGBOOTWEB_PASSWORD:
     vault: POSTGRESQL_SPRINGBOOTWEB_PASSWORD
     
-  #Slave Database
-  SLAVE_DB_HOST: pgconnect-0-2
-  SLAVE_DB_NAME: springbootweb
-  SLAVE_DB_PORT: 5001
-  SLAVE_DB_USERNAME: springbootweb
-  SLAVE_SPRINGBOOTWEB_PASSWORD:
+  #Secondary Database
+  SECONDARY_DB_HOST: pgconnect-0-2
+  SECONDARY_DB_NAME: springbootweb
+  SECONDARY_DB_PORT: 5001
+  SECONDARY_DB_USERNAME: springbootweb
+  SECONDARY_SPRINGBOOTWEB_PASSWORD:
     vault: POSTGRESQL_SPRINGBOOTWEB_PASSWORD
