@@ -1,6 +1,6 @@
 app:
   code: SBW
-  name: Spring Boot Web PGSQL
+  name: Spring Boot Web HA
   notify: appz@ecloudcontrol.com
   
 build:
