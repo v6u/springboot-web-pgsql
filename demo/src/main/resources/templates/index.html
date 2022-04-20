@@ -146,19 +146,19 @@ $(document).ready(function(){
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Full Name</label>
-                            <input type="text" class="form-control" th:field="*{fullName}" ></input>
+                            <input type="text" class="form-control" th:field="*{fullName}" required ></input>
                         </div>
                         <div class="form-group">
                             <label>Name</label>
-                            <input type="text" class="form-control" th:field="*{name}" ></input>
+                            <input type="text" class="form-control" th:field="*{name}" required ></input>
                         </div>
                         <div class="form-group">
                             <label>Login</label>
-                            <input type="text" class="form-control" th:field="*{login}" ></input>
+                            <input type="text" class="form-control" th:field="*{login}" required ></input>
                         </div>
                         <div class="form-group">
                             <label>Email</label>
-                            <input type="text" class="form-control" th:field="*{email}" ></input>
+                            <input type="text" class="form-control" th:field="*{email}" required ></input>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -181,19 +181,19 @@ $(document).ready(function(){
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Full Name</label>
-                            <input type="text" class="form-control" id="fullName" name="fullName" th:field="*{fullName}" ></input>
+                            <input type="text" class="form-control" id="fullName" name="fullName" th:field="*{fullName}" required ></input>
                         </div>
                         <div class="form-group">
                             <label>Name</label>
-                            <input type="text" class="form-control" id="name" name="name" th:field="*{name}" ></input>
+                            <input type="text" class="form-control" id="name" name="name" th:field="*{name}" required ></input>
                         </div>
                         <div class="form-group">
                             <label>Login</label>
-                            <input type="text" class="form-control" id="login" name="login" th:field="*{login}" ></input>
+                            <input type="text" class="form-control" id="login" name="login" th:field="*{login}" required ></input>
                         </div>
                         <div class="form-group">
                             <label>Email</label>
-                            <input type="text" class="form-control" id="email" name="email" th:field="*{email}" ></input>
+                            <input type="text" class="form-control" id="email" name="email" th:field="*{email}" required ></input>
                             <input type="hidden" class="form-control" name="id" id="editaccountid" th:field="*{id}"></input>
                         </div>
                     </div>
